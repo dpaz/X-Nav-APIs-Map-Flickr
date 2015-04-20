@@ -8,7 +8,7 @@ function chooseAddr(lat, lng) {
 
 		
 		$('#results').html("");
-		
+		$('#imagenes').html("");
 		addCarrousel();
 		
 }	
@@ -18,7 +18,11 @@ function addCarrousel(){
 
 	tag = $('#search input').val();
 	console.log(tag)
-	$.getJSON("https://api.flickr.com/services/feeds/photos_public.gne?&tagmode="+tag+"&format=json&jsoncallback=?",function(data){
+	
+	
+		
+	
+	$.getJSON("https://api.flickr.com/services/feeds/photos_public.gne?&tags="+tag+"&tagmode=any&format=json&jsoncallback=?",function(data){
 		$.each(data.items, function(i,elem){
 			html= "<img src="+elem.media.m+">";
 			$("#imagenes").append(html);
